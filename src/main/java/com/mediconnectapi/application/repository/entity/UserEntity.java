@@ -24,7 +24,7 @@ public class UserEntity {
 
   @JdbcTypeCode(SqlTypes.VARCHAR)
   @Column(nullable = false)
-  private UUID uuid;
+  private UUID uid;
 
   private String firstName;
 

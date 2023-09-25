@@ -6,6 +6,8 @@ import com.mediconnectapi.application.auth.dto.SignUpRequest;
 
 public interface AuthenticationService {
 
+  String getPasswordPublicKey();
+
   JwtAuthenticationResponse signUp(SignUpRequest request);
 
   JwtAuthenticationResponse signIn(SignInRequest request);

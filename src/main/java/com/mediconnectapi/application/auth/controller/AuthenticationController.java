@@ -6,10 +6,7 @@ import com.mediconnectapi.application.auth.dto.SignUpRequest;
 import com.mediconnectapi.application.auth.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -17,6 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
   private final AuthenticationService authenticationService;
+
+  @GetMapping("/passwordPublicKey")
+  public ResponseEntity<String> getPasswordPublicKey() {
+    return ResponseEntity.ok(authenticationService.getPasswordPublicKey());
+  }
 
   @PostMapping("/signUp")
   public ResponseEntity<JwtAuthenticationResponse> signUp(@RequestBody SignUpRequest request) {

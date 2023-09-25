@@ -13,9 +13,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class User {
 
-  private UUID uuid;
+  private UUID uid;
   private String firstName;
   private String lastName;
   private String email;
+  private String password;
   private UserRole role;
 }

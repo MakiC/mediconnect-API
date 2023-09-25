@@ -2,6 +2,7 @@ package com.mediconnectapi.application.auth.filter;
 
 import com.mediconnectapi.application.auth.service.AuthUserService;
 import com.mediconnectapi.application.auth.service.JwtService;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -37,21 +38,31 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       return;
     }
 
-    final String jwt = authorizationHeader.substring(7);
-    final String userEmail = jwtService.extractUserName(jwt);
+    try {
+      final String jwt = authorizationHeader.substring(7);
+      final String userEmail = jwtService.extractUserName(jwt);
 
-    if (StringUtils.isNotEmpty(userEmail) && SecurityContextHolder.getContext().getAuthentication() == null) {
-      UserDetails userDetails = authUserService.userDetailsService().loadUserByUsername(userEmail);
+      if (StringUtils.isNotEmpty(userEmail) && SecurityContextHolder.getContext().getAuthentication() == null) {
+        final UserDetails userDetails = authUserService.userDetailsService().loadUserByUsername(userEmail);
 
-      if (jwtService.isTokenValid(jwt, userDetails)) {
-        final SecurityContext context = SecurityContextHolder.createEmptyContext();
+        if (jwtService.isTokenValid(jwt, userDetails)) {
+          final SecurityContext context = SecurityContextHolder.createEmptyContext();
 
-        final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+          final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+          authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-        context.setAuthentication(authToken);
-        SecurityContextHolder.setContext(context);
+          context.setAuthentication(authToken);
+          SecurityContextHolder.setContext(context);
+        }
       }
+    } catch (ExpiredJwtException e) {
+      response.setContentType("application/json");
+      response.setCharacterEncoding("UTF-8");
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      response.getWriter().write("{\"error\":\"Token expired\"}");
+      response.getWriter().flush();
+      response.getWriter().close();
+      return;
     }
 
     filterChain.doFilter(request, response);
