@@ -134,6 +134,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<build>
+    <plugins>
+        <!-- ... other plugins ... -->
+        <plugin>
+            <groupId>com.heroku.sdk</groupId>
+            <artifactId>heroku-maven-plugin</artifactId>
+            <version>3.0.7</version> <!-- Use the latest version -->
+            <configuration>
+                <appName>mediconnect-api</appName>
+				<processTypes>
+			<web>web: java $JAVA_OPTS -jar target/mediconnect-api.jar</web>
+				</processTypes>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
 		</plugins>
 	</build>
 </project>
