@@ -8,19 +8,19 @@ spring:
         provider_class: com.zaxxer.hikari.hibernate.HikariConnectionProvider
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect # Use PostgreSQL dialect
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/mediconnect-api?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password:
+    driver-class-name: org.postgresql.Driver # Use PostgreSQL driver
+    url: ${DATABASE_URL} # Heroku provides the PostgreSQL URL
+    username: ${DATABASE_USERNAME} # Heroku provides the username
+    password: ${DATABASE_PASSWORD} # Heroku provides the password
     hikari:
       maximumPoolSize: 30
       connectionTimeout: 30000
       maxLifetime: 60000
 
 server:
-  port: 8080
+  port: ${PORT:8080} # Use the provided Heroku port or default to 8080
 
 jwt:
   secret: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351
