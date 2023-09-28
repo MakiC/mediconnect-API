@@ -1,1 +1,1 @@
-web: java -Djava.runtime.version=17 -jar target/mediconnect-api.jar
+web: java -Djava.runtime.version=17 -jar target/mediconnect-api-1.0.0-SNAPSHOT.jar
