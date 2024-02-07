@@ -3,7 +3,7 @@ package com.mediconnectapi.application.auth.controller;
 import com.mediconnectapi.application.auth.dto.JwtAuthenticationResponse;
 import com.mediconnectapi.application.auth.dto.SignInRequest;
 import com.mediconnectapi.application.auth.dto.SignUpRequest;
-import com.mediconnectapi.application.auth.service.AuthenticationService;
+import com.mediconnectapi.application.auth.controller.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

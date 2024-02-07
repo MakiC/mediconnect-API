@@ -1,4 +1,4 @@
-package com.mediconnectapi.application.auth.service;
+package com.mediconnectapi.application.auth.controller.service;
 
 import com.mediconnectapi.application.auth.dto.JwtAuthenticationResponse;
 import com.mediconnectapi.application.auth.dto.SignInRequest;

@@ -1,7 +1,7 @@
 package com.mediconnectapi.application.auth.filter;
 
-import com.mediconnectapi.application.auth.service.AuthUserService;
-import com.mediconnectapi.application.auth.service.JwtService;
+import com.mediconnectapi.application.auth.controller.service.AuthUserService;
+import com.mediconnectapi.application.auth.controller.service.JwtService;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,7 +1,7 @@
 package com.mediconnectapi.application.auth.config;
 
 import com.mediconnectapi.application.auth.filter.JwtAuthenticationFilter;
-import com.mediconnectapi.application.auth.service.AuthUserService;
+import com.mediconnectapi.application.auth.controller.service.AuthUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

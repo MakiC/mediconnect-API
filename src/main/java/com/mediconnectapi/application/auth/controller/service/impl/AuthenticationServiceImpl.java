@@ -1,13 +1,13 @@
-package com.mediconnectapi.application.auth.service.impl;
+package com.mediconnectapi.application.auth.controller.service.impl;
 
+import com.mediconnectapi.application.auth.controller.service.AuthenticationService;
+import com.mediconnectapi.application.auth.controller.service.JwtService;
 import com.mediconnectapi.application.auth.dto.JwtAuthenticationResponse;
 import com.mediconnectapi.application.auth.dto.SignInRequest;
 import com.mediconnectapi.application.auth.dto.SignUpRequest;
 import com.mediconnectapi.application.auth.entity.AuthUser;
 import com.mediconnectapi.application.auth.entity.AuthUserRole;
 import com.mediconnectapi.application.auth.repository.AuthUserRepository;
-import com.mediconnectapi.application.auth.service.AuthenticationService;
-import com.mediconnectapi.application.auth.service.JwtService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

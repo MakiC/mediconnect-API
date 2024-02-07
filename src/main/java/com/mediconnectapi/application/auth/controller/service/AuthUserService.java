@@ -1,4 +1,4 @@
-package com.mediconnectapi.application.auth.service;
+package com.mediconnectapi.application.auth.controller.service;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 

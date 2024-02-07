@@ -1,12 +1,11 @@
-package com.mediconnectapi.application.auth.service.impl;
+package com.mediconnectapi.application.auth.controller.service.impl;
 
-import com.mediconnectapi.application.auth.service.JwtService;
+import com.mediconnectapi.application.auth.controller.service.JwtService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;

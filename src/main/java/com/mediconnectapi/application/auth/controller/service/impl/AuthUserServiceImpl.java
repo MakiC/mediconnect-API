@@ -1,7 +1,7 @@
-package com.mediconnectapi.application.auth.service.impl;
+package com.mediconnectapi.application.auth.controller.service.impl;
 
+import com.mediconnectapi.application.auth.controller.service.AuthUserService;
 import com.mediconnectapi.application.auth.repository.AuthUserRepository;
-import com.mediconnectapi.application.auth.service.AuthUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
